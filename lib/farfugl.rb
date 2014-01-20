@@ -55,5 +55,6 @@ module Farfugl
     end
     self.checkout(original_branch)
     self.unstash
+    Rake::Task['db:schema:dump'].invoke
   end
 end
