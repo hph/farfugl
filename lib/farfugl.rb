@@ -1,4 +1,5 @@
 require 'farfugl/railtie' if defined? Rails
+require 'git'
 
 module Farfugl
   def self.schema_versions
@@ -20,41 +21,21 @@ module Farfugl
     migrations
   end
 
-  def self.hash(file)
-    `git log -n 1 -- #{file}`.split[1]
-  end
-
   def self.hashes(migrations)
-    migrations.map { |file| self.hash(file) }
-  end
-
-  def self.stash
-    `git stash -u`
-  end
-
-  def self.unstash
-    `git stash pop`
-  end
-
-  def self.current_branch
-    `git rev-parse --abbrev-ref HEAD`
-  end
-
-  def self.checkout(destination)
-    `git checkout -f #{destination}`
+    migrations.map { |file| Git.hash(file) }
   end
 
   def self.migrate
-    self.stash
-    original_branch = self.current_branch
+    Git.stash
+    original_branch = Git.current_branch
     hashes = self.hashes(self.pending_migrations(self.schema_versions))
     hashes.each do |commit_hash|
-      self.checkout(commit_hash)
+      Git.checkout(commit_hash)
       Rake::Task['db:migrate'].invoke
       Rake::Task['db:migrate'].reenable
     end
-    self.checkout(original_branch)
-    self.unstash
+    Git.checkout(original_branch)
+    Git.unstash
     Rake::Task['db:schema:dump'].invoke
   end
 end

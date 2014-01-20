@@ -9,10 +9,7 @@ application. The simplest solution is to checkout to the commit where each
 migration was introduced (or last modified) and run each migration from there,
 but this can be time-consuming and tedious. **Farfugl** automates this process.
 
-Please note that **Farfugl** is still under development and is not completely
-stable; always create backups your database before using it.
-
-### Install
+### Setup
 
 You can install **Farfugl** on your system like any other gem:
 
@@ -22,5 +19,10 @@ You can also add `gem 'farfugl'` to your Rails application's Gemfile and run
 `bundle`.
 
 ### Usage
+
+Please note that **Farfugl** is still under development and *may* not be
+completely stable; always create backups of your database before using it.
+
+Running **Farfugl** is simple:
 
     rake farfugl
