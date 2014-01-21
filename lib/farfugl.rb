@@ -1,4 +1,4 @@
-require 'farfugl/railtie' if defined? Rails
+require 'railtie' if defined? Rails
 require 'git'
 
 module Farfugl
