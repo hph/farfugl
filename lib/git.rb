@@ -4,11 +4,11 @@ module Git
   end
 
   def self.stash
-    `git stash -u`
+    `git stash -u -q`
   end
 
   def self.unstash
-    `git stash pop`
+    `git stash pop -q`
   end
 
   def self.current_branch
@@ -16,6 +16,6 @@ module Git
   end
 
   def self.checkout(destination)
-    `git checkout -f #{destination}`
+    `git checkout -f -q #{destination}`
   end
 end
