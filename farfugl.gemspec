@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'farfugl'
-  s.version     = '0.1.0'
+  s.version     = '0.2.0'
   s.date        = '2014-01-21'
   s.summary     = 'Run old Rails migrations without code dependence problems'
   s.description = 'Run old Rails migrations without code dependence problems'

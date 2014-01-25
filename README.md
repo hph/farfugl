@@ -25,4 +25,4 @@ completely stable; always create backups of your database before using it.
 
 Running **Farfugl** is simple:
 
-    rake farfugl
+    rake farfugl:migrate
