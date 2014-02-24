@@ -1,5 +1,5 @@
+require 'farfugl/railtie' if defined? Rails
 require 'farfugl/git'
-require 'farfugl/tasks'
 
 module Farfugl
   def self.schema_versions

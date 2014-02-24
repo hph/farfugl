@@ -1,7 +1,3 @@
-require 'rake'
-
-task default: :farfugl
-
 namespace :farfugl do
   desc 'Run migrations one by one, checked out to the correct environment'
   task migrate: :environment do
