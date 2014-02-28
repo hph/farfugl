@@ -28,7 +28,7 @@ module Farfugl
   def self.migrate
     Git.stash
     original_branch = Git.current_branch
-    hashes = self.hashes(self.pending_migrations(self.schema_versions))
+    hashes = hashes(pending_migrations(schema_versions))
     hashes.each do |commit_hash|
       Git.checkout(commit_hash)
       Rake::Task['db:migrate'].invoke
